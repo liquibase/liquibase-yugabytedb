@@ -14,7 +14,7 @@ public class YugabyteDatabase extends PostgresDatabase {
 
     @Override
     public int getPriority() {
-        return PRIORITY_DATABASE;
+        return super.getPriority()+5;
     }
 
     @Override
