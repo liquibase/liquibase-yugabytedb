@@ -1,0 +1,272 @@
+{
+  "snapshot": {
+    "objects": {
+      "liquibase.structure.core.Table": [
+        {
+          "table": {
+            "name": "datatypes_test_table"
+          }
+        }
+      ],
+      "liquibase.structure.core.Column": [
+        {
+          "column": {
+            "name": "time",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time0",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time1",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time1wtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time2",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time2wtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time3",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time3wtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time4",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time4wtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time5",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time5wtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time6",
+            "type": {
+              "typeName": "time"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "time6wtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timee0wtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timeewtz",
+            "type": {
+              "typeName": "timetz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp0",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp1",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp1wtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp2",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp2wtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp3",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp3wtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp4",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp4wtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp5",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp5wtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp6",
+            "type": {
+              "typeName": "timestamp"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestamp6wtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestampe0wtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        },
+        {
+          "column": {
+            "name": "timestampewtz",
+            "type": {
+              "typeName": "timestamptz"
+            }
+          }
+        }
+
+      ]
+    }
+  }
+}
