@@ -29,5 +29,10 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
+
+      - name: Build test infrastructure
+          working-directory: src/test/resources/docker
+          run: docker-compose up -d
+
       - name: Test With Maven
-        run: mvn clean verify --file pom.xml
+        run: mvn clean verify
