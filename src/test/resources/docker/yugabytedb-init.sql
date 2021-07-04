@@ -1,3 +1,5 @@
+create database lbcat;
+\c lbcat;
 DROP TABLE IF EXISTS authors;
     CREATE TABLE authors (
       id SERIAL,

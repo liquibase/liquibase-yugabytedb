@@ -63,6 +63,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-engine</artifactId>
             <version>1.6.0</version>
@@ -125,6 +131,11 @@
                         <goals>
                             <goal>test</goal>
                         </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*Test.java</include>
+                            </includes>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>integration-tests</id>
@@ -134,7 +145,7 @@
                         </goals>
                         <configuration>
                             <includes>
-                                <include>**/*IT.groovy</include>
+                                <include>**/*IT.java</include>
                             </includes>
                         </configuration>
                     </execution>

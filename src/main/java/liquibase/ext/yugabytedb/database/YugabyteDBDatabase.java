@@ -54,6 +54,11 @@ public class YugabyteDBDatabase extends PostgresDatabase {
     }
 
     @Override
+    protected String getDefaultDatabaseProductName() {
+        return "PostgreSQL";
+    }
+
+    @Override
     public String getShortName() {
         return "yugabytedb";
     }
