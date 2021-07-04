@@ -92,15 +92,13 @@
                     <target>1.8</target>
                     <optimize>true</optimize>
                     <debug>true</debug>
-                    <!--encoding>${project.build.sourceEncoding}</encoding-->
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
                 <configuration>
-                    <!--skipTests>false</skipTests-->
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     <reportFormat>plain</reportFormat>
                 </configuration>
@@ -111,11 +109,6 @@
                         <goals>
                             <goal>test</goal>
                         </goals>
-                        <!--configuration>
-                            <includes>
-                                <include>**/*Test.java</include>
-                            </includes>
-                        </configuration-->
                     </execution>
                     <execution>
                         <id>integration-tests</id>
@@ -126,7 +119,6 @@
                         <configuration>
                             <includes>
                                 <include>**/*IT.java</include>
-                                <!--include>**/*Test.java</include-->
                             </includes>
                         </configuration>
                     </execution>
@@ -154,15 +146,28 @@
                 </executions>
             </plugin>
 
-            <!--plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>3.2.0</version>
-            </plugin-->
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus-staging</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
 
         </plugins>
 
     </build>
+
     <distributionManagement>
         <repository>
             <id>sonatype-nexus-staging</id>
@@ -185,7 +190,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.2.0</version>
+                        <version>3.2.1</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -216,17 +221,17 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!--plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>3.0.1</version>
                         <configuration>
                             <passphrase>${env.GPG_PASSPHRASE}</passphrase>
                             <gpgArguments>
-                                <!- - This is necessary for gpg to not try to use the pinentry programs -->
-                                <!--arg>- -batch</arg>
-                                <arg>- -no-tty</arg>
-                                <arg>- -pinentry-mode</arg>
+                                <!-- This is necessary for gpg to not try to use the pinentry programs -->
+                                <arg>--batch</arg>
+                                <arg>--no-tty</arg>
+                                <arg>--pinentry-mode</arg>
                                 <arg>loopback</arg>
                             </gpgArguments>
                         </configuration>
@@ -239,7 +244,7 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin-->
+                    </plugin>
                 </plugins>
             </build>
         </profile>
