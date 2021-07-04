@@ -34,7 +34,7 @@ jobs:
       - name: Run Unit Tests With Maven
         run: mvn test
 
-  integration-test:
+  test:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
