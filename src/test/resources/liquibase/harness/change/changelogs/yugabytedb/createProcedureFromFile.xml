@@ -18,7 +18,7 @@
         </createProcedure>
         <rollback>
             <sql>
-                DROP PROCEDURE IF EXISTS test_procedure
+                DROP PROCEDURE test_procedure
             </sql>
         </rollback>
     </changeSet>
