@@ -1,4 +1,4 @@
-package liquibase.ext.yugabytedb.helpers;
+/*package liquibase.ext.yugabytedb.helpers;
 
 import java.util.Set;
 
@@ -17,4 +17,4 @@ public class SetUtils {
         return set1.containsAll(set2);
 
     }
-}
+}*/

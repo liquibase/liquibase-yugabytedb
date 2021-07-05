@@ -1,4 +1,4 @@
-package liquibase.ext;
+/*package liquibase.ext;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -45,4 +45,4 @@ public class BaseTestCase {
         liquiBase = new Liquibase(changeLogFile, new ClassLoaderResourceAccessor(), jdbcConnection);
         liquiBase.dropAll();
     }
-}
+}*/
