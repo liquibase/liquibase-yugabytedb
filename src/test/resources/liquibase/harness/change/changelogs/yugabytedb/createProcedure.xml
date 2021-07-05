@@ -20,7 +20,10 @@
                                                $$
         </createProcedure>
         <rollback>
-            <dropProcedure procedureName="test_procedure"/>
+            <!--dropProcedure procedureName="test_procedure"/-->
+            <sql>
+                DROP PROCEDURE test_procedure()
+            </sql>
         </rollback>
     </changeSet>
 </databaseChangeLog>

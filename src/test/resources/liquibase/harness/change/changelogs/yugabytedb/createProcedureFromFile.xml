@@ -17,7 +17,9 @@
                 relativeToChangelogFile="true">
         </createProcedure>
         <rollback>
-            <dropProcedure procedureName="test_procedure"/>
+            <sql>
+                DROP PROCEDURE IF EXISTS test_procedure
+            </sql>
         </rollback>
     </changeSet>
 </databaseChangeLog>
