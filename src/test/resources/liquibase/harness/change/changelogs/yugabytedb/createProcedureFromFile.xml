@@ -10,7 +10,7 @@
     <changeSet author="as" id="1">
         <createProcedure
                 comments="test procedure"
-                dbms="postgresql"
+                dbms="yugabytedb"
                 encoding="UTF-8"
                 path="createProcedure.txt"
                 procedureName="test_procedure"

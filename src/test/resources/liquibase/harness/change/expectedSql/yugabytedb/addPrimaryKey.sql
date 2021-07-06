@@ -1,3 +1,3 @@
 INVALID TEST
 
-Add Primary Key not supported.
+Drop Primary Key not supported. Cannot rollback to original state.
