@@ -1,31 +1,11 @@
-/*package liquibase.ext.yugabytedb.database;
+package liquibase.ext.yugabytedb.database;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import liquibase.CatalogAndSchema;
-import liquibase.database.jvm.JdbcConnection;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.math.BigInteger;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Arrays;
-import java.util.HashSet;
-
-import static liquibase.servicelocator.PrioritizedService.PRIORITY_DATABASE;
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-
-//import static org.mockito.ArgumentMatchers.anyString;
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.when;
-
 
 public class YugabyteDBDatabaseTest {
     YugabyteDBDatabase database;
@@ -76,4 +56,4 @@ public class YugabyteDBDatabaseTest {
         assertTrue(database.supportsRestrictForeignKeys());
     }
 
-}*/
+}

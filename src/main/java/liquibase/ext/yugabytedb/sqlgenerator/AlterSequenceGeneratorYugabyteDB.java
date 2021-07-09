@@ -8,9 +8,6 @@ import liquibase.statement.core.AlterSequenceStatement;
 public class AlterSequenceGeneratorYugabyteDB extends AlterSequenceGenerator {
     @Override
     public boolean supports(AlterSequenceStatement statement, Database database) {
-        if(database instanceof YugabyteDBDatabase)
-            return false;
-        else
-            return database.supportsSequences();
+        return false;
     }
 }

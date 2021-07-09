@@ -10,6 +10,4 @@ public class DropPrimaryKeyGeneratorYugabyteDB extends DropPrimaryKeyGenerator {
     public boolean supports(DropPrimaryKeyStatement statement, Database database) {
         return false;
     }
-
-    //Todo:throw exceptions
 }

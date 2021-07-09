@@ -43,13 +43,11 @@ public class YugabyteDBDatabase extends PostgresDatabase {
              ResultSet rs = stmt.executeQuery("select version()")
         ) {
             if (rs.next()) {
-                //TODO: Do pattern matching
-                return ((String) JdbcUtils.getResultSetValue(rs, 1)).startsWith("PostgreSQL 11.2-YB");
+                return ((String) JdbcUtils.getResultSetValue(rs, 1)).matches("^PostgreSQL\\s+\\d{1,2}(\\.\\d{1,2})?-YB.*");
             }
         } catch (SQLException throwables) {
             return false;
         }
-
         return false;
     }
 
