@@ -16,8 +16,10 @@ To run the test harness, Follow the steps given below:
    ```<YUGABYTEDB_INSTALL_DIR>/bin/yb-ctl start```
 
 2. Run the [yugabytedb-init.sql](src/test/resources/docker/yugabytedb-init.sql) file via ysqlsh.
+   
+   ```<YUGABYTEDB_INSTALL_DIR>/bin/ysqlsh -f <path/to/yugabytedb-init.sql>```
 
-3. Update the configuration in [harness-config.yml](src/test/resources/harness-config.yml).
+3. Update the configuration details in [harness-config.yml](src/test/resources/harness-config.yml).
 
 4. Run the command:
 
