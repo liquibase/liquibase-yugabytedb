@@ -5,7 +5,7 @@
 
     <groupId>org.liquibase.ext</groupId>
     <artifactId>liquibase-yugabytedb</artifactId>
-    <version>2.6.0-SNAPSHOT</version>
+    <version>4.4.1</version>
     <description>Liquibase extension for Yugabyte database</description>
     <url>http://www.yugabyte.com</url>
     <organization>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>4.4.0</version>
+            <version>4.4.1</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
