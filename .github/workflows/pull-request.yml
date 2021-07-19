@@ -75,7 +75,7 @@ jobs:
           mvn versions:set -DnewVersion=$VERSION_TAG
           git add pom.xml
           git commit -m "Version Bumped to $VERSION_TAG"
-          git tag -a -m "Version Bumped to $VERSION_TAG" liquibase-cassandra-$VERSION_TAG
+          git tag -a -m "Version Bumped to $VERSION_TAG" liquibase-yugabytedb-$VERSION_TAG
           git push "https://liquibot:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:${{ github.event.pull_request.head.ref }} --follow-tags --tags
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
