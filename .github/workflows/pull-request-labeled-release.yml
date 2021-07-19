@@ -18,7 +18,7 @@ jobs:
         yugabytedb: [2.7.1.1-b1]
     services:
       yubabyte:
-        image: yugabytedb/yugabyte:${{ matrix.postgres }}
+        image: yugabytedb/yugabyte:${{ matrix.yugabyte }}
         env:
           POSTGRES_USER: lbtest
           POSTGRES_PASSWORD: lbtest
