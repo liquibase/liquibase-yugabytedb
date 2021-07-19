@@ -40,7 +40,7 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
-      - name: Start Postgres Docker Database
-        run: cd ./src/test/resources/docker && docker composer up -d
+      - name: Start YugabyteDB Docker Database
+        run: cd ./src/test/resources/docker && docker compose up -d
       - name: Test With Maven
         run: mvn clean verify --file pom.xml
