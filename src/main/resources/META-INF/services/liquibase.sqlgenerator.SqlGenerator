@@ -1,1 +1,3 @@
-liquibase.ext.yugabytedb.sqlgenerator.DropPrimaryKeyGeneratorYugabyte
+liquibase.ext.yugabytedb.sqlgenerator.DropPrimaryKeyGeneratorYugabyteDB
+liquibase.ext.yugabytedb.sqlgenerator.AlterSequenceGeneratorYugabyteDB
+liquibase.ext.yugabytedb.sqlgenerator.RenameSequenceGeneratorYugabyteDB

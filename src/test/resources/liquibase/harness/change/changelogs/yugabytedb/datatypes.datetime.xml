@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="1" author="r2">
+        <createTable tableName="datatypes_test_table">
+
+            <!-- DATE/TIME -->
+            <!-- https://www.postgresql.org/docs/12/datatype-datetime.html -->
+
+            <!-- VARIABLE -->
+            <column name="timestamp" type="timestamp "/>
+            <column name="timestampewtz" type="timestamp with time zone"/>
+            <column name="timestamp0" type="timestamp (0)"/>
+            <column name="timestampe0wtz" type="timestamp (0) with time zone"/>
+            <column name="timestamp1" type="timestamp (1)"/>
+            <column name="timestamp1wtz" type="timestamp (1) with time zone"/>
+            <column name="timestamp2" type="timestamp (2)"/>
+            <column name="timestamp2wtz" type="timestamp (2) with time zone"/>
+            <column name="timestamp3" type="timestamp (3)"/>
+            <column name="timestamp3wtz" type="timestamp (3) with time zone"/>
+            <column name="timestamp4" type="timestamp (4)"/>
+            <column name="timestamp4wtz" type="timestamp (4) with time zone"/>
+            <column name="timestamp5" type="timestamp (5)"/>
+            <column name="timestamp5wtz" type="timestamp (5) with time zone"/>
+            <column name="timestamp6" type="timestamp (6)"/>
+            <column name="timestamp6wtz" type="timestamp (6) with time zone"/>
+
+            <column name="date" type="date"/>
+
+            <!-- VARIABLE -->
+            <column name="time" type="time"/>
+            <column name="timeewtz" type="time with time zone"/>
+            <column name="time0" type="time (0)"/>
+            <column name="timee0wtz" type="time (0) with time zone"/>
+            <column name="time1" type="time (1)"/>
+            <column name="time1wtz" type="time (1) with time zone"/>
+            <column name="time2" type="time (2)"/>
+            <column name="time2wtz" type="time (2) with time zone"/>
+            <column name="time3" type="time (3)"/>
+            <column name="time3wtz" type="time (3) with time zone"/>
+            <column name="time4" type="time (4)"/>
+            <column name="time4wtz" type="time (4) with time zone"/>
+            <column name="time5" type="time (5)"/>
+            <column name="time5wtz" type="time (5) with time zone"/>
+            <column name="time6" type="time (6)"/>
+            <column name="time6wtz" type="time (6) with time zone"/>
+
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

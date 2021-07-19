@@ -1,1 +1,1 @@
-liquibase.ext.yugabytedb.database.YugabyteDatabase
+liquibase.ext.yugabytedb.database.YugabyteDBDatabase
