@@ -9,12 +9,27 @@ on:
 
 jobs:
   integration-tests:
-    name: Java ${{ matrix.java }}
+    name: Java ${{ matrix.java }}, YugabyteDB ${{ matrix.yugabyte }}
     runs-on: ubuntu-latest
     if: contains( github.event.pull_request.labels.*.name, 'Extension Release Candidate :rocket:' )
     strategy:
       matrix:
         java: [8, 11, 16]
+        yugabytedb: [2.7.1.1-b1]
+    services:
+      yubabyte:
+        image: yugabytedb/yugabyte:${{ matrix.postgres }}
+        env:
+          POSTGRES_USER: lbtest
+          POSTGRES_PASSWORD: lbtest
+        ports:
+          - 5433:5433
+          - 7000:7000
+          - 9000:9000
+          - 9042:9042
+# docker run -d --name yugabyte  -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042\
+#  yugabytedb/yugabyte:latest bin/yugabyted start\
+#  --daemon=false
     steps:
       - uses: actions/checkout@v2
       - name: Cache Local Maven Repository
