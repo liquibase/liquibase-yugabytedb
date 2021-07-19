@@ -25,7 +25,7 @@ jobs:
         ports:
           - 5433:5433
         volumes:
-          - src/test/resources/docker/yugabytedb-init.sql:/docker-entrypoint-initdb.d/yugabytedb-init.sql
+          - ./src/test/resources/docker/yugabytedb-init.sql:/docker-entrypoint-initdb.d/yugabytedb-init.sql
     steps:
       - uses: actions/checkout@v2
       - name: Cache Local Maven Repository
