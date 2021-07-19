@@ -17,7 +17,6 @@ jobs:
         java: [ 8, 11, 16 ]
         yugabytedb: [ 2.7.1.1-b1 ]
 
-        cd ./src/test/resources/docker && docker composer up -d
     #    services:
     #      yubabyte:
     #        image: yugabytedb/yugabyte:${{ matrix.yugabytedb }}
