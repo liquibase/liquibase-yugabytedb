@@ -41,6 +41,6 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
       - name: Start YugabyteDB Docker Database
-        run: cd ./src/test/resources/docker && docker compose up -d
+        run: cd ./src/test/resources/docker && docker-compose up -d
       - name: Test With Maven
         run: mvn clean verify --file pom.xml
