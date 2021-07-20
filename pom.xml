@@ -18,6 +18,27 @@
             <name>Apache License, Version 2.0</name>
         </license>
     </licenses>
+    <issueManagement>
+        <url>https://github.com/liquibase/liquibase-yugabytedb/issues</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:http://github.com/liquibase/liquibase-yugabytedb.git</connection>
+        <url>https://github.com/liquibase/liquibase-yugabytedb</url>
+    </scm>
+    <developers>
+        <developer>
+            <name>Sfurti Sarah</name>
+            <email>ssarah@yugabyte.com</email>
+        </developer>
+        <developer>
+            <name>Amogh Shetkar</name>
+            <email>ashetkar@yugabyte.com</email>
+        </developer>
+        <developer>
+            <name>Neeraj Kumar</name>
+            <email>nkumar@yugabyte.com</email>
+        </developer>   
+    </developers>
     <packaging>jar</packaging>
 
     <properties>
