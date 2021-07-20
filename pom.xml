@@ -5,7 +5,8 @@
 
     <groupId>org.liquibase.ext</groupId>
     <artifactId>liquibase-yugabytedb</artifactId>
-    <version>4.4.2-SNAPSHOT</version>
+    <version>4.4.1</version>
+    <name>Liquibase YugabyteDB extension</name>
     <description>Liquibase extension for Yugabyte database</description>
     <url>http://www.yugabyte.com</url>
     <organization>
