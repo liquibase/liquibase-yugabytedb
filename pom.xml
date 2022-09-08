@@ -5,28 +5,45 @@
 
     <groupId>org.liquibase.ext</groupId>
     <artifactId>liquibase-yugabytedb</artifactId>
-    <version>4.15.1-SNAPSHOT</version>
-    <name>Liquibase YugabyteDB Extension</name>
-    <description>Liquibase extension for Yugabyte database</description>
-    <url>http://www.yugabyte.com</url>
+    <version>0-SNAPSHOT</version>
+
+    <name>Liquibase Extension: YugabyteDB support</name>
+    <description>Add this Liquibase extension to your project to support YugabyteDB</description>
+    <url>https://github.com/liquibase/liquibase-yugabytedb</url>
+
     <organization>
         <name>Yugabyte, Inc.</name>
         <url>http://www.yugabyte.com</url>
     </organization>
+
     <licenses>
         <license>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
             <name>Apache License, Version 2.0</name>
         </license>
     </licenses>
+
     <issueManagement>
         <url>https://github.com/liquibase/liquibase-yugabytedb/issues</url>
     </issueManagement>
+
     <scm>
         <connection>scm:git:http://github.com/liquibase/liquibase-yugabytedb.git</connection>
         <url>https://github.com/liquibase/liquibase-yugabytedb</url>
+        <tag>HEAD</tag>
     </scm>
+
     <developers>
+        <developer>
+            <id>liquibase</id>
+            <name>Liquibase Community</name>
+            <email>community@liquibase.com</email>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>-6</timezone>
+        </developer>
         <developer>
             <name>Sfurti Sarah</name>
             <email>ssarah@yugabyte.com</email>
@@ -38,26 +55,29 @@
         <developer>
             <name>Neeraj Kumar</name>
             <email>nkumar@yugabyte.com</email>
-        </developer>   
+        </developer>
     </developers>
-    <packaging>jar</packaging>
-
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <liquibase.version>0-SNAPSHOT</liquibase.version>
+        <liquibase.sdk.github.token>${env.GITHUB_TOKEN}</liquibase.sdk.github.token>
+
+        <sonar.organization>liquibase</sonar.organization>
+        <sonar.projectKey>${project.artifactId}</sonar.projectKey>
+        <sonar.projectName>${project.name}</sonar.projectName>
+        <sonar.projectDescription>${project.description}</sonar.projectDescription>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.scm.provider>git</sonar.scm.provider>
+        <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+
+        <jacoco.fileset.directory>target</jacoco.fileset.directory>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>4.15.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.4.0</version>
-            <scope>test</scope>
+            <version>${liquibase.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -72,206 +92,112 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <version>1.8.2</version>
-            <scope>test</scope>
+            <groupId>com.yugabyte</groupId>
+            <artifactId>jdbc-yugabytedb</artifactId>
+            <version>42.3.0</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
-
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.13.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>addSources</goal>
-                            <goal>addTestSources</goal>
-                            <goal>compile</goal>
-                            <goal>compileTests</goal>
-                            <goal>removeStubs</goal>
-                            <goal>removeTestStubs</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>8</release>
                     <optimize>true</optimize>
                     <debug>true</debug>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
                 <configuration>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     <reportFormat>plain</reportFormat>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <attach>true</attach>
+                    <author>false</author>
+                    <doctitle>Liquibase YugabyteDB ${version} API</doctitle>
+                    <quiet>true</quiet>
+                    <doclint>none</doclint>
+                    <encoding>UTF-8</encoding>
+
+                    <includeDependencySources>false</includeDependencySources>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>unit-tests</id>
-                        <phase>test</phase>
+                        <id>javadoc-default</id>
                         <goals>
-                            <goal>test</goal>
+                            <goal>jar</goal>
                         </goals>
-                        <configuration>
-                            <includes>
-                                <include>**/*Test.java</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>integration-tests</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <includes>
-                                <include>**/*IT.java</include>
-                            </includes>
-                        </configuration>
+                        <phase>package</phase>
                     </execution>
                 </executions>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
-                        <id>enforce-java</id>
-                        <phase>compile</phase>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>enforce</goal>
+                            <goal>jar</goal>
                         </goals>
-                        <configuration>
-                            <rules>
-                                <requireJavaVersion>
-                                    <version>1.8</version>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.3.0</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
-                <extensions>true</extensions>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
                 <configuration>
-                    <serverId>sonatype-nexus-staging</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <fileSets>
+                        <fileSet>
+                            <directory>${jacoco.fileset.directory}</directory>
+                            <includes>
+                                <include>**/jacoco.exec</include>
+                            </includes>
+                        </fileSet>
+                    </fileSets>
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.liquibase.ext</groupId>
+                <artifactId>liquibase-sdk-maven-plugin</artifactId>
+                <version>0.10.17</version>
+            </plugin>
         </plugins>
 
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>sonatype-nexus-staging</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <profiles>
-        <profile>
-            <!-- Required for deployment to Sonatype -->
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>3.2.1</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <configuration>
-                            <author>false</author>
-                            <doctitle>Liquibase CDI ${project.version} API</doctitle>
-                            <quiet>true</quiet>
-                            <doclint>none</doclint>
-                            <encoding>UTF-8</encoding>
-                            <jarOutputDirectory>${project.basedir}/target</jarOutputDirectory>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>jar-javadoc</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                                <phase>package</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.0.1</version>
-                        <configuration>
-                            <passphrase>${env.GPG_PASSPHRASE}</passphrase>
-                            <gpgArguments>
-                                <!-- This is necessary for gpg to not try to use the pinentry programs -->
-                                <arg>--batch</arg>
-                                <arg>--no-tty</arg>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
