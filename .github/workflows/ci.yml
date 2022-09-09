@@ -87,7 +87,7 @@ jobs:
             ~/.m2/repository/org/liquibase/
 
       - name: Run Tests
-        run: mvn -B jacoco:prepare-agent surefire:test
+        run: mvn -B jacoco:prepare-agent surefire:test -DfailIfNoTests=true
 
       - name: Archive Test Results
         if: ${{ always() }}
@@ -99,14 +99,9 @@ jobs:
             **/target/jacoco.exec
 
 #  integration-test:
-#    name: Test Harness for YugabyteDB ${{ matrix.yugabytedb }}
+#    name: Integration Tests
 #    needs: build
 #    runs-on: ubuntu-latest
-#
-#    strategy:
-#      fail-fast: false
-#      matrix:
-#        yugabytedb: [ "" ]
 #
 #    steps:
 #      - uses: actions/checkout@v2
@@ -126,15 +121,15 @@ jobs:
 #            **/target/**
 #            ~/.m2/repository/org/liquibase/
 #
-#      - name: Run Tests
-#        run: mvn -B jacoco:prepare-agent surefire:test -Dyugabytedb.version=${{ matrix.yugabytedb }}
+#      - name: Run Integration Tests
+#        run: mvn -B jacoco:prepare-agent failsafe:integration-test failsafe:verify
 #
 #      - name: Archive Test Results
 #        if: ${{ always() }}
 #        uses: actions/upload-artifact@v2
 #        with:
-#          name: test-reports-yugabytedb-${{ matrix.yugabytedb }}
+#          name: test-reports-yugabytedb
 #          path: |
-#            **/target/surefire-reports
+#            **/target/failsafe-reports
 #            **/target/jacoco.exec
 
