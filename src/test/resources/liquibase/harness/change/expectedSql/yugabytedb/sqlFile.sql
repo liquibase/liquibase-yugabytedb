@@ -1,0 +1,1 @@
+CREATE TABLE public.sqltest (id INTEGER)
