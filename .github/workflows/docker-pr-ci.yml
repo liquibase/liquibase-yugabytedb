@@ -31,4 +31,4 @@ jobs:
         run: mvn -B jacoco:prepare-agent surefire:test -Dit.test=LiquibaseHarnessSuiteIT
 
       - name: Stop database container
-        run: docker stop yugabyte-container
+        run: docker-compose -f src/test/resources/docker/docker-compose.yml down
