@@ -11,36 +11,31 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Start database container
         # would be ideal to reuse /src/test/resources/docker/docker-compose.yml
-        run: docker run --name yugabyte-container -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5433 -v "./yugabytedb-init.sql:/docker-entrypoint-initdb.d/yugabytedb-init.sql" -d yugabytedb/yugabyte:latest
+        run: docker run --name yugabyte-container -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5433 -v src/test/resources/yugabytedb-init.sql:/docker-entrypoint-initdb.d/yugabytedb-init.sql -d yugabytedb/yugabyte:latest
+
       - name: Start Yugabyte database in container
         run: docker exec -it yugabyte-container bin/yugabyted start --daemon=false --initial_scripts_dir /docker-entrypoint-initdb.d
 
-  # Run Liquibase Test Harness using Temurin Java 17 with caching enabled.
-  run-maven:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Setup Temurin Java 17
         uses: actions/setup-java@v2
         with:
           java-version: 17
           distribution: temurin
           cache: 'maven'
+
       # Build the code using Maven
       - name: Build with Maven
         run: mvn -B jacoco:prepare-agent package --file pom.xml
+
       # Run the LiquibaseHarnessSuiteIT tests using Maven
       - name: Run Test Harness Tests
         run: mvn -B jacoco:prepare-agent surefire:test -Dit.test=LiquibaseHarnessSuiteIT
 
-  # Tear down the Docker container.
-  stop-database:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Stop database container
         run: docker stop yugabyte-container
