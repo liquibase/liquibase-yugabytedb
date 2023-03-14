@@ -6,7 +6,7 @@ on:
 
 jobs:
   # Start a Docker database container.
-  start-database:
+  liquibaset-test-harness:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
