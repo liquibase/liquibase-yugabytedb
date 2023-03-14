@@ -1,5 +1,5 @@
 import liquibase.harness.BaseHarnessSuite;
 
-class BaseLiquibaseTestHarnessSuite extends BaseHarnessSuite {
+class ExtensionHarnessTest extends BaseHarnessSuite {
 
 }
