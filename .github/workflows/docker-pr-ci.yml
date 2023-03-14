@@ -12,7 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Start database container
-        run: docker run --name my-db-container -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres:latest
+        # would be ideal to reuse /src/test/resources/docker/docker-compose.yml
+        run: docker run --name yugabyte-container -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5433 -v "./yugabytedb-init.sql:/docker-entrypoint-initdb.d/yugabytedb-init.sql" -d yugabytedb/yugabyte:latest
+      - name: Start Yugabyte database in container
+        run: docker exec -it yugabyte-container bin/yugabyted start --daemon=false --initial_scripts_dir /docker-entrypoint-initdb.d
 
   # Run Liquibase Test Harness using Temurin Java 17 with caching enabled.
   run-maven:
@@ -40,4 +43,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Stop database container
-        run: docker stop my-db-container
+        run: docker stop yugabyte-container
