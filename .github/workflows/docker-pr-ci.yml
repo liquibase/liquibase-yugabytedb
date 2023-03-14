@@ -14,13 +14,7 @@ jobs:
 
       - name: Start database container
         # would be ideal to reuse /src/test/resources/docker/docker-compose.yml
-        run: docker run --name yugabyte-container -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5433 -v src/test/resources/yugabytedb-init.sql:/docker-entrypoint-initdb.d/yugabytedb-init.sql -d yugabytedb/yugabyte:latest
-
-      - name: Start Yugabyte database in container
-        run: docker exec -it yugabyte-container bin/yugabyted start --daemon=false --initial_scripts_dir /docker-entrypoint-initdb.d
-
-      - name: Checkout code
-        uses: actions/checkout@v2
+        run: docker-compose -f src/testdocker-compose.yml up -d
 
       - name: Setup Temurin Java 17
         uses: actions/setup-java@v2
