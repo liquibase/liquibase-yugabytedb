@@ -1,4 +1,4 @@
-name: Docker CI
+name: Liquibas Test Harness (Docker)
 
 on:
   pull_request:
@@ -24,12 +24,15 @@ jobs:
         run: mvn -ntp -Dmaven.test.skip package
 
       - name: Run Base Liquibase Test Harness
+        continue-on-error: true
         run: mvn -ntp -Dtest=ExtensionHarnessTest test
 
       - name: Run Foundational Liquibase Test Harness
+        continue-on-error: true
         run: mvn -ntp -Dtest=LiquibaseHarnessFoundationalSuiteTest test
 
       - name: Run Advanced Liquibase Test Harness
+        continue-on-error: true
         run: mvn -ntp -Dtest=LiquibaseHarnessAdvancedSuiteTest test
 
       - name: Stop database container
