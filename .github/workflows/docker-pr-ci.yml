@@ -26,13 +26,13 @@ jobs:
         run: mvn -B jacoco:prepare-agent package --file pom.xml
 
       - name: Run Base Liquibase Test Harness
-        run: mvn -ntp -Dtest=BaseLiquibaseTestHarnessSuite test
+        run: mvn -ntp -Dtest=ExtensionHarnessTest test
 
       - name: Run Foundational Liquibase Test Harness
-        run: mvn -ntp -Dtest=FoundationalLiquibaseTestHarnessSuite test
+        run: mvn -ntp -Dtest=LiquibaseHarnessFoundationalSuiteTest test
 
       - name: Run Advanced Liquibase Test Harness
-        run: mvn -ntp -Dtest=AdvancedLiquibaseTestHarnessSuite test
+        run: mvn -ntp -Dtest=LiquibaseHarnessAdvancedSuiteTest test
 
       - name: Stop database container
         run: docker-compose -f src/test/resources/docker/docker-compose.yml down
