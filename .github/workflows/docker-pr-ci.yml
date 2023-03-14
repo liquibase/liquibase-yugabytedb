@@ -1,11 +1,9 @@
 name: Docker CI
 
-# Controls when the action will run.
 on:
   pull_request:
 
 jobs:
-  # Start a Docker database container.
   liquibaset-test-harness:
     runs-on: ubuntu-latest
     steps:
@@ -23,7 +21,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        run: mvn -B jacoco:prepare-agent package --file pom.xml
+        run: mvn -ntp -Dmaven.test.skip package
 
       - name: Run Base Liquibase Test Harness
         run: mvn -ntp -Dtest=ExtensionHarnessTest test
