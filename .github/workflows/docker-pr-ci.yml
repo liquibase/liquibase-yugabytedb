@@ -13,8 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Start database container
-        # would be ideal to reuse /src/test/resources/docker/docker-compose.yml
-        run: docker-compose -f src/testdocker-compose.yml up -d
+        run: docker-compose -f src/test/resources/docker/docker-compose.yml up -d
 
       - name: Setup Temurin Java 17
         uses: actions/setup-java@v2
