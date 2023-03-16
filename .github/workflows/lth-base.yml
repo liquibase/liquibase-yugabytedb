@@ -30,7 +30,8 @@ jobs:
 
       - name: Test Reporter
         uses: dorny/test-reporter@v1.6.0
-        continue-on-error: true
+        fail-on-error: 'false'
+        if: success() || failure()    # run this step even if previous step failed
         with:
           name: Liquibase Test Harness - Base Reports            # Name of the check run which will be created
           path: target/surefire-reports/TEST-*.xml    # Path to test results
