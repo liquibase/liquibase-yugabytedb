@@ -35,5 +35,8 @@ jobs:
         continue-on-error: true
         run: mvn -ntp -Dtest=LiquibaseHarnessAdvancedSuiteTest test
 
+      - name: Test Reporter
+        uses: dorny/test-reporter@v1.6.0
+
       - name: Stop database container
         run: docker-compose -f src/test/resources/docker/docker-compose.yml down
