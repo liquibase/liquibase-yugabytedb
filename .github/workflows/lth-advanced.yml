@@ -33,7 +33,7 @@ jobs:
         continue-on-error: true
         if: success() || failure()    # run this step even if previous step failed
         with:
-          name: Liquibase Test Harness            # Name of the check run which will be created
+          name: Liquibase Test Harness - Advanced Reports           # Name of the check run which will be created
           path: target/surefire-reports/TEST-*.xml    # Path to test results
           reporter: java-junit        # Format of test results
 
