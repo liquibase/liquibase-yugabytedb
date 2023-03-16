@@ -1,12 +1,17 @@
-name: Liquibase Test Harness - Base
+name: Liquibase Test Harness
 
 on:
   pull_request:
 
 jobs:
   liquibaset-test-harness:
-    name: Liquibase Test Harness - Base
+    name: Liquibase Test Harness
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        liquibase-support-level: [Base, Foundational, Advanced]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,16 +29,16 @@ jobs:
       - name: Build with Maven
         run: mvn -ntp -Dmaven.test.skip package
 
-      - name: Run Base Liquibase Test Harness
+      - name: Run ${{ matrix.liquibase-support-level }} Liquibase Test Harness
         continue-on-error: true
-        run: mvn -ntp -Dtest=ExtensionHarnessTest test
+        run: mvn -ntp -Dtest=${{ matrix.liquibase-support-level }}ExtensionHarnessSuite test
 
       - name: Test Reporter
         uses: dorny/test-reporter@v1.6.0
         continue-on-error: true
         if: success() || failure()    # run this step even if previous step failed
         with:
-          name: Liquibase Test Harness - Base Reports            # Name of the check run which will be created
+          name: Liquibase Test Harness - ${{ matrix.liquibase-support-level }} Reports            # Name of the check run which will be created
           path: target/surefire-reports/TEST-*.xml    # Path to test results
           reporter: java-junit        # Format of test results
           fail-on-error: false
