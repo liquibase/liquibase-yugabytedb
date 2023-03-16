@@ -5,7 +5,7 @@ on:
 
 jobs:
   liquibaset-test-harness:
-    name: Liquibase Test Harness
+    name: Liquibase Test Harness - Advanced
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
