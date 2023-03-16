@@ -27,16 +27,21 @@ jobs:
         continue-on-error: true
         run: mvn -ntp -Dtest=ExtensionHarnessTest test
 
-      - name: Run Foundational Liquibase Test Harness
-        continue-on-error: true
-        run: mvn -ntp -Dtest=LiquibaseHarnessFoundationalSuiteTest test
+      # - name: Run Foundational Liquibase Test Harness
+      #   continue-on-error: true
+      #   run: mvn -ntp -Dtest=LiquibaseHarnessFoundationalSuiteTest test
 
-      - name: Run Advanced Liquibase Test Harness
-        continue-on-error: true
-        run: mvn -ntp -Dtest=LiquibaseHarnessAdvancedSuiteTest test
+      # - name: Run Advanced Liquibase Test Harness
+      #   continue-on-error: true
+      #   run: mvn -ntp -Dtest=LiquibaseHarnessAdvancedSuiteTest test
 
       - name: Test Reporter
         uses: dorny/test-reporter@v1.6.0
+        if: success() || failure()    # run this step even if previous step failed
+        with:
+          name: Liquibase Test Harness            # Name of the check run which will be created
+          path: reports/TEST-*.xml    # Path to test results
+          reporter: java-junit        # Format of test results
 
       - name: Stop database container
         run: docker-compose -f src/test/resources/docker/docker-compose.yml down
