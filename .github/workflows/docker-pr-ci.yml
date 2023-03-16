@@ -1,10 +1,11 @@
-name: Liquibas Test Harness (Docker)
+name: Liquibase Test Harness (Docker)
 
 on:
   pull_request:
 
 jobs:
   liquibaset-test-harness:
+    name: Liquibase Test Harness
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -40,7 +41,7 @@ jobs:
         if: success() || failure()    # run this step even if previous step failed
         with:
           name: Liquibase Test Harness            # Name of the check run which will be created
-          path: reports/TEST-*.xml    # Path to test results
+          path: target/surefire-reports/TEST-*.xml    # Path to test results
           reporter: java-junit        # Format of test results
 
       - name: Stop database container
