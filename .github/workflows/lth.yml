@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         liquibase-support-level: [Contributed, Foundational, Advanced] # Define the different test levels to run
-        fail-fast: false # Set fail-fast to false to run all test levels even if some of them fail
+      fail-fast: false # Set fail-fast to false to run all test levels even if some of them fail
 
     steps:
       - name: Checkout code # Checkout the code from the repository
