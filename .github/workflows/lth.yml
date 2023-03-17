@@ -4,46 +4,43 @@ on:
   pull_request:
 
 jobs:
-  liquibaset-test-harness:
+  liquibase-test-harness:
     name: Liquibase Test Harness
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        liquibase-support-level: [Contributed, Foundational, Advanced]
+        liquibase-support-level: [Contributed, Foundational, Advanced] # Define the different test levels to run
+        fail-fast: false # Set fail-fast to false to run all test levels even if some of them fail
 
     steps:
-      - name: Checkout code
+      - name: Checkout code # Checkout the code from the repository
         uses: actions/checkout@v2
 
-      - name: Start database container
+      - name: Start database container # Start the database container using Docker Compose
         run: docker-compose -f src/test/resources/docker/docker-compose.yml up -d
 
-      - name: Setup Temurin Java 17
+      - name: Setup Temurin Java 17 # Set up Java 17 with Temurin distribution and cache the Maven packages
         uses: actions/setup-java@v2
         with:
           java-version: 17
           distribution: temurin
           cache: 'maven'
 
-      - name: Build with Maven
+      - name: Build with Maven # Build the code with Maven (skip tests)
         run: mvn -ntp -Dmaven.test.skip package
 
-      - name: Run ${{ matrix.liquibase-support-level }} Liquibase Test Harness
-        continue-on-error: true
+      - name: Run ${{ matrix.liquibase-support-level }} Liquibase Test Harness # Run the Liquibase test harness at each test level
         env:
-          LIQUIBASE_PRO_LICENSE_KEY: ${{ secrets.PRO_LICENSE_KEY }}
-        run: mvn -ntp -Dtest=${{ matrix.liquibase-support-level }}ExtensionHarnessSuite test
+          LIQUIBASE_PRO_LICENSE_KEY: ${{ secrets.PRO_LICENSE_KEY }} # Set the environment variable for the Liquibase Pro license key
+        run: mvn -ntp -Dtest=${{ matrix.liquibase-support-level }}ExtensionHarnessSuite test # Run the Liquibase test harness at each test level
 
-      - name: Test Reporter
+      - name: Test Reporter # Generate a test report using the Test Reporter action
         uses: dorny/test-reporter@v1.6.0
-        continue-on-error: true
-        if: success() || failure()
         with:
-          name: Liquibase Test Harness - ${{ matrix.liquibase-support-level }} Reports
-          path: target/surefire-reports/TEST-*.xml
-          reporter: java-junit
-          fail-on-error: false
+          name: Liquibase Test Harness - ${{ matrix.liquibase-support-level }} Reports # Set the name of the test report
+          path: target/surefire-reports/TEST-*.xml # Set the path to the test report files
+          reporter: java-junit # Set the reporter to use
 
-      - name: Stop database container
+      - name: Stop database container # Stop the database container using Docker Compose
         run: docker-compose -f src/test/resources/docker/docker-compose.yml down
