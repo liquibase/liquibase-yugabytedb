@@ -42,6 +42,7 @@ jobs:
           name: Liquibase Test Harness - ${{ matrix.liquibase-support-level }} Reports # Set the name of the test report
           path: target/surefire-reports/TEST-*.xml # Set the path to the test report files
           reporter: java-junit # Set the reporter to use
+          fail-on-error: false # Set fail-on-error to false to show report even if it has failed tests
 
       - name: Stop database container # Stop the database container using Docker Compose
         run: docker-compose -f src/test/resources/docker/docker-compose.yml down
