@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        liquibase-support-level: [Base, Foundational, Advanced]
+        liquibase-support-level: [Contributed, Foundational, Advanced]
 
     steps:
       - name: Checkout code
@@ -36,11 +36,11 @@ jobs:
       - name: Test Reporter
         uses: dorny/test-reporter@v1.6.0
         continue-on-error: true
-        if: success() || failure()    # run this step even if previous step failed
+        if: success() || failure()
         with:
-          name: Liquibase Test Harness - ${{ matrix.liquibase-support-level }} Reports            # Name of the check run which will be created
-          path: target/surefire-reports/TEST-*.xml    # Path to test results
-          reporter: java-junit        # Format of test results
+          name: Liquibase Test Harness - ${{ matrix.liquibase-support-level }} Reports
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
           fail-on-error: false
 
       - name: Stop database container
