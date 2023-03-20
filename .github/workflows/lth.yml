@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         liquibase-support-level: [Contributed, Foundational, Advanced] # Define the different test levels to run
+        yugabyte-version: [2.16, 2.17]
       fail-fast: false # Set fail-fast to false to run all test levels even if some of them fail
 
     steps:
@@ -18,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Start database container # Start the database container using Docker Compose
-        run: docker-compose -f src/test/resources/docker/docker-compose.yml up -d
+        run: docker-compose -f src/test/resources/docker/docker-compose-${{ matrix.yugabyte-version }}.yml up -d
 
       - name: Setup Temurin Java 17 # Set up Java 17 with Temurin distribution and cache the Maven packages
         uses: actions/setup-java@v3
@@ -34,7 +35,7 @@ jobs:
         continue-on-error: true # Continue to run the action even if the previous steps fail
         env:
           LIQUIBASE_PRO_LICENSE_KEY: ${{ secrets.PRO_LICENSE_KEY }} # Set the environment variable for the Liquibase Pro license key
-        run: mvn -ntp -Dtest=${{ matrix.liquibase-support-level }}ExtensionHarnessSuite test # Run the Liquibase test harness at each test level
+        run: mvn -ntp -DdbVersion=${{ matrix.yugabyte-version }} -Dtest=${{ matrix.liquibase-support-level }}ExtensionHarnessSuite test # Run the Liquibase test harness at each test level
 
       - name: Test Reporter # Generate a test report using the Test Reporter action
         uses: dorny/test-reporter@v1.6.0
@@ -46,4 +47,4 @@ jobs:
           fail-on-error: false # Set fail-on-error to false to show report even if it has failed tests
 
       - name: Stop database container # Stop the database container using Docker Compose
-        run: docker-compose -f src/test/resources/docker/docker-compose.yml down
+        run: docker-compose -f src/test/resources/docker/docker-compose-${{ matrix.yugabyte-version }}.yml down
