@@ -10,5 +10,10 @@ on:
 
 jobs:
   liquibase-test-harness:
+    strategy:
+      matrix:
+        yugabyte-version: [2.16, 2.17]
     uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.3.0
     secrets: inherit
+    with:
+      version: ${{ matrix.yugabyte-version }}
