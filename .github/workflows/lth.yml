@@ -10,5 +10,6 @@ on:
 
 jobs:
   liquibase-test-harness:
+  #testing against main
     uses: liquibase/build-logic/.github/workflows/lth-docker.yml@main
     secrets: inherit
