@@ -10,6 +10,6 @@ databasesUnderTest:
 
   - name: yugabytedb
     version: 2.17
-    url: jdbc:postgresql://localhost:5433/lbcat
+    url: jdbc:postgresql://localhost:5434/lbcat
     username: yugabyte
     password: yugabyte
