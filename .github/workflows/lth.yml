@@ -7,7 +7,10 @@ on:
       - opened
       - reopened
       - synchronize
-
+  push:
+    branches:
+      - main
+      -
 jobs:
   liquibase-test-harness:
     uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.3.0
