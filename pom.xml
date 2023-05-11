@@ -59,7 +59,7 @@
     </developers>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <liquibase.version>4.21.1</liquibase.version>
+        <liquibase.version>4.22.0</liquibase.version>
         <liquibase.sdk.github.token>${env.GITHUB_TOKEN}</liquibase.sdk.github.token>
         <spock.version>2.2-groovy-2.5</spock.version>
         <groovy.version>2.4.17</groovy.version>
