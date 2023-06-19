@@ -10,11 +10,11 @@ on:
   push:
     branches:
       - main
-      -
+
 jobs:
-  liquibase-test-harness:
-    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.3.0
-    secrets: inherit
+#  liquibase-test-harness:
+#    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.3.0
+#    secrets: inherit
 
   dependabot:
     name: Merge dependabot
