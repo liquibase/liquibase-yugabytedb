@@ -252,6 +252,5 @@
                 <version>0.10.22</version>
             </plugin>
         </plugins>
-
     </build>
 </project>
