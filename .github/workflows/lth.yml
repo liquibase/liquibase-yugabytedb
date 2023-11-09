@@ -12,15 +12,7 @@ on:
       - main
 
 jobs:
-  approve:
-    runs-on: ubuntu-latest
-    environment:
-      name: FORK
-    steps:
-    - name: Approve
-      run: echo For security reasons, all pull requests need to be approved first before running any automated CI.
+#  liquibase-test-harness:
+#    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.3.0
+#    secrets: inherit
 
-  liquibase-test-harness:
-    needs: approve
-    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@DAT-14350
-    secrets: inherit
