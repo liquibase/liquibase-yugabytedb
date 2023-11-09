@@ -15,4 +15,3 @@ jobs:
   liquibase-test-harness:
     uses: liquibase/build-logic/.github/workflows/lth-docker.yml@DAT-14350
     secrets: inherit
-
