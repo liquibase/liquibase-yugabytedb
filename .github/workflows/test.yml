@@ -21,7 +21,6 @@ jobs:
       trigger: ${{ github.event_name }}
     secrets: inherit
     
-    
 #  integration-test:
 #    name: Integration Tests
 #    needs: build
