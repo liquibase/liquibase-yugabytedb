@@ -1,20 +1,7 @@
 version: 2
 updates:
-- package-ecosystem: maven
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  pull-request-branch-name:
-    separator: "-"
-  labels:
-      - "sdou"
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  pull-request-branch-name:
-    separator: "-"
-  labels:
-    - "sdou"
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
