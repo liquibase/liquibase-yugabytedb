@@ -16,18 +16,21 @@ on:
 jobs:
   approve:
     runs-on: ubuntu-latest
+    outputs:
+      PR_APPROVED: ${{ steps.approve.outputs.PR_APPROVED }}
     if: contains(github.event_name, 'pull_request_target')
     environment:
       name: 'Integrate Forked PR'
     steps:
     - name: Approve
+      id: approve
       run: |
         echo For security reasons, all pull requests need to be approved first before running any automated CI.
-        echo "PR_APPROVED=true" >> $GITHUB_ENV  
+        core.setOutput("PR_APPROVED", "true");
 
   build:
     uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@DAT-14350
-    if: contains(github.event_name, 'pull_request_target') == false || env.PR_APPROVED == 'true'
+    if: contains(github.event_name, 'pull_request_target') == false || ${{ needs.approve.outputs.PR_APPROVED }} == 'true'
     with:
       java: '[11, 17, 18]'
     secrets: inherit
