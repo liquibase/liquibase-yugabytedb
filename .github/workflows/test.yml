@@ -16,6 +16,7 @@ on:
 jobs:
   approve:
     runs-on: ubuntu-latest
+    if: contains(github.event_name, 'pull_request')
     outputs:
       PR_APPROVED: ${{ steps.approve.outputs.PR_APPROVED }}
     environment:
@@ -23,7 +24,6 @@ jobs:
     steps:
     - name: Approve
       id: approve
-      if: contains(github.event_name, 'pull_request_target')
       run: |
         echo Pull Request Event: ${{ github.event_name }}
         echo For security reasons, all forked requests need to be approved first before running any automated CI.
