@@ -31,7 +31,7 @@ jobs:
 
   build:
     uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@DAT-14350
-    if: contains(github.event_name, 'pull_request_target') == false || ${{ needs.approve.outputs.PR_APPROVED }} == 'true'
+    if: contains(github.event_name, 'pull_request') == false || ${{ needs.approve.outputs.PR_APPROVED }} == 'true'
     with:
       java: '[11, 17, 18]'
     secrets: inherit
