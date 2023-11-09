@@ -21,11 +21,13 @@ jobs:
       name: 'Integrate Forked PR'
     steps:
     - name: Approve
-      run: echo For security reasons, all pull requests need to be approved first before running any automated CI.
+      run: |
+        echo For security reasons, all pull requests need to be approved first before running any automated CI.
+        echo "PR_APPROVED=true" >> $GITHUB_ENV  
 
   build:
     uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@DAT-14350
-    needs: approve
+    if: contains(github.event_name, 'pull_request_target') == false || ${{ env.PR_APPROVED }} == 'true'
     with:
       java: '[11, 17, 18]'
     secrets: inherit
