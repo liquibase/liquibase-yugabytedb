@@ -14,24 +14,8 @@ on:
       - synchronize
 
 jobs:
-  approve:
-    runs-on: ubuntu-latest
-    if: contains(github.event_name, 'pull_request')
-    outputs:
-      PR_APPROVED: ${{ steps.approve.outputs.PR_APPROVED }}
-    environment:
-      name: 'Integrate Forked PR'
-    steps:
-    - name: Approve
-      id: approve
-      run: |
-        echo Pull Request Event: ${{ github.event_name }}
-        echo For security reasons, all forked requests need to be approved first before running any automated CI.
-        core.setOutput("PR_APPROVED", "true");
-
   build:
     uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@DAT-14350
-    if: contains(github.event_name, 'pull_request') == false || ${{ needs.approve.outputs.PR_APPROVED }} == 'true'
     with:
       java: '[11, 17, 18]'
     secrets: inherit
