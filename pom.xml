@@ -11,6 +11,7 @@
     <description>Add this Liquibase extension to your project to support YugabyteDB</description>
     <url>https://github.com/liquibase/liquibase-yugabytedb</url>
 
+         
     <organization>
         <name>Yugabyte, Inc.</name>
         <url>http://www.yugabyte.com</url>
