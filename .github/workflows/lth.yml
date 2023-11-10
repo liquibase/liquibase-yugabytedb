@@ -7,12 +7,13 @@ on:
       - opened
       - reopened
       - synchronize
-  push:
-    branches:
-      - main
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
-#  liquibase-test-harness:
-#    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.3.0
-#    secrets: inherit
-
+  liquibase-test-harness:
+    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@DAT-14350
+    secrets: inherit
