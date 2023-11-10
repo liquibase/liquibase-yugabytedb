@@ -1,4 +1,4 @@
-name: Build and Test From Forks
+name: Build and Test From Fork
 
 on:
   pull_request_target:
