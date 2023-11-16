@@ -1,6 +1,6 @@
 package liquibase.harness.snapshot.yugabytedb
 
-import liquibase.harness.snapshot.SnapshotTest
+import liquibase.harness.snapshot.SnapshotObjectTests
 import liquibase.snapshot.DatabaseSnapshot
 import liquibase.structure.core.Column
 import liquibase.structure.core.Table
@@ -34,4 +34,4 @@ import liquibase.structure.core.Table
                     }
                 }
         ],
-] as SnapshotTest.TestConfig[]
+] as SnapshotObjectTests[]
