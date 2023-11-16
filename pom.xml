@@ -105,7 +105,7 @@
         <dependency>
             <groupId>com.yugabyte</groupId>
             <artifactId>jdbc-yugabytedb</artifactId>
-            <version>42.3.5-yb-3</version>
+            <version>42.3.5-yb-4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
