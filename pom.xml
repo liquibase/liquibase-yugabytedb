@@ -50,6 +50,7 @@
 
     <properties>
         <liquibase.version>4.25.0</liquibase.version>
+        <sonar.tests>src/test/groovy</sonar.tests>
     </properties>
 
     <dependencies>
