@@ -65,6 +65,7 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.2</version>
         </dependency>
+        this should not build
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
