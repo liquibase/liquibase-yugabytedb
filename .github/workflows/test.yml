@@ -1,7 +1,7 @@
 name: Build and Test
 
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - reopened
@@ -16,7 +16,7 @@ jobs:
 
   build-test:
     needs: authorize
-    uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@v0.6.6
+    uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@v0.6.7
     secrets: inherit
     
 #  integration-test:
@@ -59,3 +59,4 @@ jobs:
     needs: build-test
     uses: liquibase/build-logic/.github/workflows/dependabot-automerge.yml@v0.6.6
     secrets: inherit
+
