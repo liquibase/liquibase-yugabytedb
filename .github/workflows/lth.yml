@@ -20,11 +20,11 @@ jobs:
       
   liquibase-test-harness:
     needs: authorize
-    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.7.7
+    uses: liquibase/build-logic/.github/workflows/lth-docker.yml@v0.7.8
     secrets: inherit
 
 
   dependabot:
     needs: liquibase-test-harness
-    uses: liquibase/build-logic/.github/workflows/dependabot-automerge.yml@v0.7.7
+    uses: liquibase/build-logic/.github/workflows/dependabot-automerge.yml@v0.7.8
     secrets: inherit
