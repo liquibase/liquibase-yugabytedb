@@ -19,9 +19,9 @@
     <scm>
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
-        <url>https://github.com/liquibase/liquibase-yugabytedb.git</url>
-        <tag>HEAD</tag>
-    </scm>
+		<url>https://github.com/liquibase/liquibase-yugabytedb.git</url>
+		<tag>HEAD</tag>
+	</scm>
 
     <developers>
         <developer>
@@ -81,7 +81,7 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-test-harness</artifactId>
-            <version>1.0.9</version>
+            <version>1.0.10</version>
             <scope>test</scope>
         </dependency>
         <dependency>
