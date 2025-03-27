@@ -39,6 +39,10 @@ public class YugabyteDBDatabase extends PostgresDatabase {
 
     @Override
     public boolean isCorrectDatabaseImplementation(DatabaseConnection conn) throws DatabaseException {
+        if (!(conn instanceof JdbcConnection)) {
+            return false;
+        }
+
         try (Statement stmt = ((JdbcConnection) conn).createStatement();
              ResultSet rs = stmt.executeQuery("select version()")
         ) {
