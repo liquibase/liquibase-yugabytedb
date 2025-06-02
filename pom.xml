@@ -52,7 +52,7 @@
         <liquibase.version>4.32.0</liquibase.version>
         <sonar.tests>src/test/groovy</sonar.tests>
         <junit.version>5.11.4</junit.version>
-        <junit-platform.version>1.11.4</junit-platform.version>
+        <junit-platform.version>1.13.0</junit-platform.version>
     </properties>
 
     <dependencies>
