@@ -10,7 +10,7 @@
 
     <groupId>org.liquibase.ext</groupId>
     <artifactId>liquibase-yugabytedb</artifactId>
-    <version>5.0.0-SNAPSHOT</version>
+    <version>5.0.1-SNAPSHOT</version>
 
     <name>Liquibase Extension: YugabyteDB support</name>
     <description>Add this Liquibase extension to your project to support YugabyteDB</description>
