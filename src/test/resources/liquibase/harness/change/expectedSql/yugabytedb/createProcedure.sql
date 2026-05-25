@@ -1,6 +1,1 @@
-CREATE OR REPLACE PROCEDURE test_procedure()
-LANGUAGE 'plpgsql'
-AS $$
-BEGIN
-END;
-$$
+INVALID TEST -- procedure snapshot validation requires liquibase-commercial (not a dependency)

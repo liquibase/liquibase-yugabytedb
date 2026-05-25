@@ -14,12 +14,23 @@
     {
       "comments": "test_comment",
       "author": "as",
+      "description": "createTable tableName=test_table_json",
+      "contexts": "test_context",
+      "exectype": "EXECUTED",
+      "labels": "test_label",
+      "filename": "liquibase\/harness\/compatibility\/foundational\/changelogs\/createTable.json",
+      "id": "2",
+      "tag": ""
+    },
+    {
+      "comments": "test_comment",
+      "author": "as",
       "description": "createTable tableName=test_table_yaml",
       "contexts": "test_context",
       "exectype": "EXECUTED",
       "labels": "test_label",
       "filename": "liquibase\/harness\/compatibility\/foundational\/changelogs\/createTable.yml",
-      "id": "1",
+      "id": "3",
       "tag": ""
     },
     {
@@ -30,19 +41,8 @@
       "exectype": "EXECUTED",
       "labels": "test_label",
       "filename": "liquibase\/harness\/compatibility\/foundational\/changelogs\/createTable.sql",
-      "id": "1",
+      "id": "4",
       "tag": "test_tag"
-    },
-    {
-      "comments": "test_comment",
-      "author": "as",
-      "description": "createTable tableName=test_table_json",
-      "contexts": "test_context",
-      "exectype": "EXECUTED",
-      "labels": "test_label",
-      "filename": "liquibase\/harness\/compatibility\/foundational\/changelogs\/createTable.json",
-      "id": "1",
-      "tag": ""
     }
   ]
 }
