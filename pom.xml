@@ -53,12 +53,12 @@
         <sonar.tests>src/test/groovy</sonar.tests>
         <junit.version>5.11.4</junit.version>
         <junit-platform.version>1.11.4</junit-platform.version>
-        <!-- Pin groovy/spock to versions compatible with liquibase-test-harness 1.0.11,
-             which is built against groovy 4.0.x / spock 2.3-groovy-4.0. The parent POM
-             defaults to groovy 5.0 / spock 2.4-groovy-5.0, which is binary-incompatible
-             (org.spockframework.lang.SpecInternals was moved in spock 2.4). -->
-        <groovy-all.version>4.0.28</groovy-all.version>
-        <spock-core.version>2.3-groovy-4.0</spock-core.version>
+        <!-- Align groovy/spock with liquibase-test-harness 1.0.12, which is built
+             against groovy 5.0 / spock 2.4-groovy-5.0. The harness specs are compiled
+             against spock 2.4, so an older spock at runtime fails with NoSuchMethodError
+             (e.g. SpecificationContext.setCurrentBlock). -->
+        <groovy-all.version>5.0.6</groovy-all.version>
+        <spock-core.version>2.4-groovy-5.0</spock-core.version>
     </properties>
 
     <dependencies>
