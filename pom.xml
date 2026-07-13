@@ -51,7 +51,7 @@
     <properties>
         <liquibase.version>5.0.3</liquibase.version>
         <sonar.tests>src/test/groovy</sonar.tests>
-        <junit.version>5.11.4</junit.version>
+        <junit.version>6.1.2</junit.version>
         <junit-platform.version>1.11.4</junit-platform.version>
         <!-- Align groovy/spock with liquibase-test-harness 1.0.12, which is built
              against groovy 5.0 / spock 2.4-groovy-5.0. The harness specs are compiled
