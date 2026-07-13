@@ -51,8 +51,8 @@
     <properties>
         <liquibase.version>5.0.3</liquibase.version>
         <sonar.tests>src/test/groovy</sonar.tests>
-        <junit.version>5.11.4</junit.version>
-        <junit-platform.version>1.11.4</junit-platform.version>
+        <!-- JUnit 6+ aligns all modules (jupiter, vintage, platform) under one version. -->
+        <junit.version>6.1.2</junit.version>
         <!-- Align groovy/spock with liquibase-test-harness 1.0.12, which is built
              against groovy 5.0 / spock 2.4-groovy-5.0. The harness specs are compiled
              against spock 2.4, so an older spock at runtime fails with NoSuchMethodError
@@ -110,13 +110,13 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite</artifactId>
-            <version>${junit-platform.version}</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>${junit-platform.version}</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
